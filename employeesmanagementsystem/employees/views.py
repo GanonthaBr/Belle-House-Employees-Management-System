@@ -14,7 +14,7 @@ class EmployeeList(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
     
     def get(self, request, pk):
-        employee = Employee.objects.get(pk=pk)
+        employee = Employee.objects.get(employee_id=pk)
         if employee:
             serializer = EmployeeSerializer(employee)
             return Response(serializer.data,status=status.HTTP_200_OK)
