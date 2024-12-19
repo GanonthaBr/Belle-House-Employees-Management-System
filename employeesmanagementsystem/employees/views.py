@@ -13,7 +13,7 @@ class EmployeeList(APIView):
         serializer = EmployeeSerializer(employees, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
-    def get(self, request, pk):
+    def get_by_id(self, request, pk):
         employee = Employee.objects.get(employee_id=pk)
         if employee:
             serializer = EmployeeSerializer(employee)
