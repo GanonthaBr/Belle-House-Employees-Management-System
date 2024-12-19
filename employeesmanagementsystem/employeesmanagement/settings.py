@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'employeesmanagementsystem.urls'
+ROOT_URLCONF = 'employeesmanagement.urls'
 
 TEMPLATES = [
     {
