@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 # Create your views here.
 
 class EmployeeView(APIView):
-    def get_by_id(self, request, pk):
+    def get(self, request, pk):
         employee = Employee.objects.get(employee_id=pk)
         if employee:
             serializer = EmployeeSerializer(employee)
