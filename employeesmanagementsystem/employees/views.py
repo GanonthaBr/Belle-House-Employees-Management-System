@@ -25,7 +25,7 @@ class EmployeeView(APIView):
     def put(self, request, pk):
         employee = Employee.objects.get(pk=pk)
         if employee:
-            serializer = EmployeeSerializer(employee, data=request.data)
+            serializer = EmployeeSerializer(employee, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)
