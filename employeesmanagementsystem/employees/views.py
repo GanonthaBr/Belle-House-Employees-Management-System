@@ -25,10 +25,12 @@ class EmployeeView(APIView):
     def put(self, request, pk):
         employee = Employee.objects.get(pk=pk)
         if employee:
-            serializer = EmployeeSerializer(employee, data=request.data, partial=True)
+            data = request.data.copy()
+            data.pop('employee_id', None)  # Exclude employee_id from the update
+            serializer = EmployeeSerializer(employee, data=data, partial=True)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data)
+                return Response(serializer.data, status=status.HTTP_200_OK)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response({"message":"Employee not found!"},status=status.HTTP_404_NOT_FOUND)
     
