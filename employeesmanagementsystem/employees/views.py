@@ -7,12 +7,7 @@ from rest_framework.views import APIView
 
 # Create your views here.
 
-class EmployeeList(APIView):
-    def get(self, request):
-        employees = Employee.objects.all()
-        serializer = EmployeeSerializer(employees, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    
+class EmployeeView(APIView):
     def get_by_id(self, request, pk):
         employee = Employee.objects.get(employee_id=pk)
         if employee:
@@ -43,3 +38,10 @@ class EmployeeList(APIView):
             employee.delete()
             return Response({"message":"Deleted!"},status=status.HTTP_204_NO_CONTENT)
         return Response({"message":"Employee not found!"},status=status.HTTP_404_NOT_FOUND)
+    
+
+class EmployeeList(APIView):
+     def get(self, request):
+        employees = Employee.objects.all()
+        serializer = EmployeeSerializer(employees, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
