@@ -56,8 +56,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'employeesmanagement.urls'
 
 CORS_ALLOWED_ORIGINS = [
+    "https://bellehouseniger.com",
     "http://127.0.0.1:8000",
-    "https://app.bellehouseniger.com",
 ]
 
 TEMPLATES = [
