@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'employees',
-    'django_filters',
     'wageslip',
     'corsheaders',
 ]
