@@ -46,6 +46,7 @@ class Invoice(models.Model):
     tax = models.BooleanField()
     type_tax = models.CharField(choices=TYPE_TAX,max_length=100)
     payment_mode = models.TextField()
+    date = models.DateField(auto_now=True)
 
     def save(self,*args, **kwargs):
 
