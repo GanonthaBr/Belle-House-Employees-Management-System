@@ -37,8 +37,6 @@ class Invoice(models.Model):
         ('TVA', 'TVA'),
         ('ISB','ISB')
     )
-
-
     topic = models.TextField()
     number = models.CharField(max_length=100)
     echeance = models.DateField()
@@ -49,7 +47,6 @@ class Invoice(models.Model):
     date = models.DateField(auto_now=True)
 
     def save(self,*args, **kwargs):
-
         if not self.number:
             last_invoice = Invoice.objects.all().order_by('id').last()
             if last_invoice:
@@ -57,6 +54,7 @@ class Invoice(models.Model):
             else:
                 self.number = '1'
         super().save(*args,**kwargs)
+
     @property
     def total_amount(self):
         total = sum(designation.designation_price for designation in self.designations.all())
@@ -68,7 +66,6 @@ class Invoice(models.Model):
                 total += total * 0.16
         
         return total
-    
 class Designation(models.Model):
     invoice = models.ForeignKey(Invoice,related_name='designations',on_delete=models.CASCADE)
     designation_title = models.TextField()
