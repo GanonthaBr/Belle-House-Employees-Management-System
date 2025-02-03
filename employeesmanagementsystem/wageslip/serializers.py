@@ -21,7 +21,7 @@ class DesignationSerializer(ModelSerializer):
 class InvoiceSerializer(ModelSerializer):
     client = ClientSerializer(read_only=True)
     client_id = serializers.PrimaryKeyRelatedField(
-        querset=Client.objects.all(),source='client',write_only=True
+        queryset=Client.objects.all(),source='client',write_only=True
     )
     designations = DesignationSerializer(many=True)
     total_amount = SerializerMethodField()
