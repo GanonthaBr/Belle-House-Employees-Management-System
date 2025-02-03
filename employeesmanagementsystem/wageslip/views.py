@@ -33,7 +33,7 @@ class InvoiceViewSet(viewsets.ModelViewSet):
             logo_path = os.path.abspath(logo_path)
         context = {'invoice': invoice, 'logo_path':logo_path}
         response = HttpResponse(content_type='application/pdf')
-        response['Content-Disposition'] = f'attachment; filename="invoice_{invoice.id}.pdf"'
+        response['Content-Disposition'] = f'attachment; filename="facture_{invoice.client}.pdf"'
         template = get_template(template_path)
         html = template.render(context)
         pisa_status = pisa.CreatePDF(html, dest=response)

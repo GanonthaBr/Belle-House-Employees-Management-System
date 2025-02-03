@@ -1,4 +1,5 @@
 from .models import Client, Invoice, Designation
+from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
 
 
@@ -18,11 +19,15 @@ class DesignationSerializer(ModelSerializer):
         return obj.designation_price
     
 class InvoiceSerializer(ModelSerializer):
+    client = ClientSerializer(read_only=True)
+    client_id = serializers.PrimaryKeyRelatedField(
+        querset=Client.objects.all(),source='client',write_only=True
+    )
     designations = DesignationSerializer(many=True)
     total_amount = SerializerMethodField()
     class Meta:
         model = Invoice
-        fields = ['id','topic','date','number','echeance','client','tax','type_tax','payment_mode','designations','total_amount']
+        fields = ['id','topic','date','number','echeance','client','client_id','tax','type_tax','payment_mode','designations','total_amount']
     
     def get_total_amount(self,obj):
         return obj.total_amount
