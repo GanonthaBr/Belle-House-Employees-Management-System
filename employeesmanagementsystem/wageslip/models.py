@@ -35,6 +35,7 @@ class Invoice(models.Model):
     #choices, tuple
     TYPE_TAX = (
         ('TVA', 'TVA'),
+        ('None','None'),
         ('ISB','ISB')
     )
     topic = models.TextField()
