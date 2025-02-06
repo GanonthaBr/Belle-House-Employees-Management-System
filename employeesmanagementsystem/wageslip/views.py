@@ -1,12 +1,8 @@
-from django.shortcuts import render
-
-# Create your views here.
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from .models import Invoice, Client, Designation
 from .serializers import InvoiceSerializer, ClientSerializer, DesignationSerializer
 from django.template.loader import get_template
-
 from xhtml2pdf import pisa
 from django.http import HttpResponse
 from django.contrib.staticfiles import finders
@@ -26,7 +22,10 @@ class InvoiceViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['get'])
     def download_pdf(self, request, pk=None):
-        invoice = self.get_object()
+        try:
+            invoice = self.get_object()
+        except FileNotFoundError:
+            return HttpResponse("File Not Found", status=404)
         template_path = 'invoice_pdf.html'
         logo_path = finders.find('logo.png')
         if logo_path:
