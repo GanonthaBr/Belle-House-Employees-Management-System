@@ -8,7 +8,6 @@ class ClientSerializer(ModelSerializer):
         model = Client
         fields = "__all__"
         
-
 class DesignationSerializer(ModelSerializer):
     designation_price = SerializerMethodField()
     class Meta:
@@ -35,6 +34,7 @@ class InvoiceSerializer(ModelSerializer):
     def create(self, validated_data):
         designation_data = validated_data.pop('designations')
         invoice = Invoice.objects.create(**validated_data)
-        for designation in designation_data:
-            Designation.objects.create(invoice=invoice,**designation)
+        Designation.objects.bulk_create([
+            Designation(invoice=invoice, **designation) for designation in designation_data
+        ])
         return invoice
