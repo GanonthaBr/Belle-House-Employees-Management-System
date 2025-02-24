@@ -39,7 +39,7 @@ class Invoice(models.Model):
         ('ISB','ISB')
     )
     topic = models.TextField()
-    name = models.TextField()
+    name = models.TextField(null=True)
     number = models.CharField(max_length=100)
     echeance = models.DateField()
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
