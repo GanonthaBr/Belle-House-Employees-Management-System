@@ -368,7 +368,7 @@
                                 </tr>
                             </thead>
                             <tbody>  
-                            {%for x in designations%}                       
+                            {%for x in invoice.designations%}                       
                                 <tr>
                                     <td class="no">1</td>
                                     <td class="text-left" style="min-width: 500px;border-right: 1px solid #fff">
@@ -377,7 +377,7 @@
                                     </td>
                                     <td class="qty">{{x.designation_quantity}}</td>
                                     <td class="unit">{{x.designation_unit_price}}</td>
-                                    <td class="total">{{ x.designation_unit_price|multiply:x.designation_quantity }} </td>
+                                    <td class="total">{{ x.designation_price }} </td>
                                 </tr>
                                 {%endfor%}
                             </tbody>
@@ -396,12 +396,12 @@
                                 <tr>
                                     <td colspan="2"></td>
                                     <td colspan="2">Montant Total TTC</td>
-                                    <td> After tax FCFA</b> </td>
+                                    <td> {{total_amount}} FCFA</b> </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"></td>
                                     <td colspan="2">Net à payer</td>
-                                    <td> <b> Rest to pay FCFA</b> </td>
+                                    <td> <b> {{total_amount}} FCFA</b> </td>
                                 </tr>
                             </tfoot>
                         </table>
