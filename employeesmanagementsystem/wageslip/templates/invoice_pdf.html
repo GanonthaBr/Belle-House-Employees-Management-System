@@ -1,3 +1,4 @@
+{% load arithmetics %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -387,8 +388,12 @@
                                 {%if invoice.tax%}
                                 <tr>
                                     <td colspan="2"></td>
-                                    <td colspan="2"> Tax rate</td>
-                                    <td> <b> Tax value FCFA</b> </td>
+                                    {%if invoice.type_tax == 'isb' || invoice.type_tax == 'ISB' %}
+                                    <td colspan="2"> Tax {invoice.type_tax} 2%</td>
+                                    {%else%}
+                                    <td colspan="2"> Tax {invoice.type_tax} 16%</td>
+                                    {%endif%}
+                                    <td> <b> {{  }} FCFA</b> </td>
                                 </tr>
                                 {%else%}
                                 <tr>

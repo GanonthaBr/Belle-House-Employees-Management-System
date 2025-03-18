@@ -68,6 +68,9 @@ class Invoice(models.Model):
                 total += total * 0.16
         
         return total
+    def total(self):
+        total = sum(designation.designation_price for designation in self.designations.all())
+        return total
 class Designation(models.Model):
     invoice = models.ForeignKey(Invoice,related_name='designations',on_delete=models.CASCADE)
     designation_title = models.TextField()
