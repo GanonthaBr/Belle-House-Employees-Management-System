@@ -68,6 +68,7 @@ class Invoice(models.Model):
                 total += total * 0.16
         
         return total
+    @property
     def total(self):
         total = sum(designation.designation_price for designation in self.designations.all())
         return total
