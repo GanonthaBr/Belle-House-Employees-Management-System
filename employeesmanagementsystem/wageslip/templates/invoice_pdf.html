@@ -325,25 +325,25 @@
                                             <div class="col invoice-to">
                                                 <div class="text-gray-light">Délivré à:</div>
                                                 <h3 class="to">{{invoice.client.client_name}}</h3>
-                                                <div class="address">Quartier,Niamey-Niger</div>
+                                                <div class="address">{{invoice.client.client_quartier}},{{invoice.client.client_city}}-{{invoice.client.client_country}}</div>
                                                 <div class="address">
-                                                    Tel: 898989383
+                                                    Tel: {{invoice.client.client_phone}}
                                                 </div>
                                                 <div class="email">
-                                                    <a href="mailto:'client@gmail.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">client@gmail.com</span></a>
+                                                    <a href="mailto:'client@gmail.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">{{invoice.client.client_mail}}</span></a>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="designation">
-                                                <h2>Invoice Proforma</h2>
+                                                <h2>{{invoice.name}}</h2>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="col invoice-details">
-                                                <h1 class="invoice-id" style="font-size:12px">Numéro de facture : BH/12/234</h1>
-                                                <div class="date">Date: <b>12-12-2025</b> </div>
-                                                <div class="date">Délai de validité: <b>12-12-2025</b> </div>
+                                                <h1 class="invoice-id" style="font-size:12px">Numéro de facture : BH/2025/{{invoice.number}}</h1>
+                                                <div class="date">Date: <b>{{invoice.echeance}}</b> </div>
+                                                <div class="date">Délai de validité: <b>{{invoice.echeance}}</b> </div>
                                             </div>
                                         </td>
                                     </tr>
@@ -352,7 +352,7 @@
                         </div>
                         <div class="row subject">
                             <div class="col-12">
-                                <p> <b style="text-decoration: underline;">Object:</b> Topic </p>
+                                <p> <b style="text-decoration: underline;">Object:</b> {{invoice.topic}} </p>
                             </div>
                         </div>
                         <table style="width: 100%; table-layout: fixed; ">
@@ -365,62 +365,25 @@
                                     <th class="text-right" style="width: 20%; font-weight:bold ">Prix Total HT <br> (FCFA)</th>
                                 </tr>
                             </thead>
-                            <tbody>                         
+                            <tbody>  
+                            {%for x in designations%}                       
                                 <tr>
                                     <td class="no">1</td>
                                     <td class="text-left" style="min-width: 500px;border-right: 1px solid #fff">
-                                        <h4>Title</h4>
-                                        <p>Details</p>
+                                        <h4>{{x.designation_title}}</h4>
+                                        <p>{{x.designation_details}}</p>
                                     </td>
-                                    <td class="qty">12</td>
-                                    <td class="unit">10000</td>
-                                    <td class="total"> 5045495</td>
+                                    <td class="qty">{{x.designation_quantity}}</td>
+                                    <td class="unit">{{x.designation_unit_price}}</td>
+                                    <td class="total">{{ x.designation_unit_price|multiply:x.designation_quantity }} </td>
                                 </tr>
-                                <tr>
-                                    <td class="no">1</td>
-                                    <td class="text-left" style="min-width: 500px;border-right: 1px solid #fff">
-                                        <h4>Title</h4>
-                                        <p>Details</p>
-                                    </td>
-                                    <td class="qty">12</td>
-                                    <td class="unit">10000</td>
-                                    <td class="total"> 5045495</td>
-                                </tr>
-                                <tr>
-                                    <td class="no">1</td>
-                                    <td class="text-left" style="min-width: 500px;border-right: 1px solid #fff">
-                                        <h4>Title</h4>
-                                        <p>Details</p>
-                                    </td>
-                                    <td class="qty">12</td>
-                                    <td class="unit">10000</td>
-                                    <td class="total"> 5045495</td>
-                                </tr>
-                                <tr>
-                                    <td class="no">1</td>
-                                    <td class="text-left" style="min-width: 500px;border-right: 1px solid #fff">
-                                        <h4>Title</h4>
-                                        <p>Details</p>
-                                    </td>
-                                    <td class="qty">12</td>
-                                    <td class="unit">10000</td>
-                                    <td class="total"> 5045495</td>
-                                </tr>
-                                <tr>
-                                    <td class="no">1</td>
-                                    <td class="text-left" style="min-width: 500px;border-right: 1px solid #fff">
-                                        <h4>Title</h4>
-                                        <p>Details</p>
-                                    </td>
-                                    <td class="qty">12</td>
-                                    <td class="unit">10000</td>
-                                    <td class="total"> 5045495</td>
-                                </tr>
+                                {%endfor%}
                             </tbody>
+
                             <tfoot style="font-size: 10px;">
                                 <tr>
                                     <td colspan="2"></td>
-                                    <td colspan="2">Montant Total HT</td>
+                                    <td colspan="2">TOTAL Price</td>
                                     <td> Before Tax <b> FCFA</b> </td>
                                 </tr>
                                 <tr>
