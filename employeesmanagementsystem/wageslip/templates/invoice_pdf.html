@@ -375,7 +375,7 @@
                                     </td>
                                     <td class="qty">{{x.designation_quantity}}</td>
                                     <td class="unit">{{x.designation_unit_price}}</td>
-                                    <td class="total">{{ x.designation_unit_price|multiply:x.designation_quantity }} </td>
+                                    <td class="total">{{ x.designation_unit_price * x.designation_quantity }} </td>
                                 </tr>
                                 {%endfor%}
                             </tbody>
