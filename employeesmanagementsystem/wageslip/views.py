@@ -28,9 +28,10 @@ class InvoiceViewSet(viewsets.ModelViewSet):
             return HttpResponse("File Not Found", status=404)
         template_path = 'invoice_pdf.html'
         logo_path = finders.find('logo.png')
+        stamp = finders.find('stamp.png')
         if logo_path:
             logo_path = os.path.abspath(logo_path)
-        context = {'invoice': invoice, 'logo_path':logo_path}
+        context = {'invoice': invoice, 'stamp':stamp,'logo_path':logo_path}
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = f'attachment; filename="facture_{invoice.client.client_name}.pdf"'
         template = get_template(template_path)
