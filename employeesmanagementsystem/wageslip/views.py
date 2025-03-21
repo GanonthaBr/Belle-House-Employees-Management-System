@@ -1,5 +1,6 @@
-from rest_framework import viewsets
+from rest_framework import viewsets,status
 from rest_framework.decorators import action
+from rest_framework.response import Response
 from .models import Invoice, Client, Designation
 from .serializers import InvoiceSerializer, ClientSerializer, DesignationSerializer
 from django.template.loader import get_template
@@ -16,12 +17,24 @@ class ClientViewSet(viewsets.ModelViewSet):
 class DesignationViewSet(viewsets.ModelViewSet):
     queryset = Designation.objects.all()
     serializer_class = DesignationSerializer()
+
 class InvoiceViewSet(viewsets.ModelViewSet):
     queryset = Invoice.objects.all()
     serializer_class = InvoiceSerializer
+    def put(self,request,pk):
+        try:
+            invoice = self.get_object()
+        except Invoice.DoesNotExist:
+            return Response({"error":"Invoice not Found"},status=status.HTTP_404_NOT_FOUND)
+        serializer = self.get_serializer(invoice, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
     @action(detail=True, methods=['get'])
-    def download_pdf(self, request, pk=None):
+    def download_pdf(self):
         try:
             invoice = self.get_object()
         except FileNotFoundError:
@@ -40,3 +53,4 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         if pisa_status.err:
             return HttpResponse('We had some errors <pre>' + html + '</pre>')
         return response
+    
