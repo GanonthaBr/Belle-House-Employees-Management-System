@@ -45,6 +45,7 @@ class Invoice(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     tax = models.BooleanField()
     type_tax = models.CharField(choices=TYPE_TAX,max_length=100)
+    montant_avance = models.DecimalField(decimal_places=2)
     payment_mode = models.TextField()
     date = models.DateField(auto_now=True)
 
