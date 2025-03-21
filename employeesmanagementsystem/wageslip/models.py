@@ -45,7 +45,7 @@ class Invoice(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     tax = models.BooleanField()
     type_tax = models.CharField(choices=TYPE_TAX,max_length=100)
-    montant_avance = models.DecimalField(decimal_places=2)
+    montant_avance = models.DecimalField(decimal_places=2, max_digits=20)
     payment_mode = models.TextField()
     date = models.DateField(auto_now=True)
 
@@ -77,7 +77,7 @@ class Designation(models.Model):
     invoice = models.ForeignKey(Invoice,related_name='designations',on_delete=models.CASCADE)
     designation_title = models.TextField()
     designation_details = models.TextField()
-    designation_unit_price = models.DecimalField(max_digits=10,decimal_places=2)
+    designation_unit_price = models.DecimalField(max_digits=20,decimal_places=2)
     designation_quantity = models.IntegerField()
 
     @property
