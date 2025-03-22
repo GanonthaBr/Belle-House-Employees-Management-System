@@ -21,7 +21,7 @@ class DesignationViewSet(viewsets.ModelViewSet):
 class InvoiceViewSet(viewsets.ModelViewSet):
     queryset = Invoice.objects.all()
     serializer_class = InvoiceSerializer
-    def put(self,request,pk):
+    def put(self,request):
         try:
             invoice = self.get_object()
         except Invoice.DoesNotExist:
