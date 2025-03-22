@@ -34,7 +34,7 @@ class InvoiceViewSet(viewsets.ModelViewSet):
 
 
     @action(detail=True, methods=['get'])
-    def download_pdf(self):
+    def download_pdf(self,request,pk=None):
         try:
             invoice = self.get_object()
         except FileNotFoundError:
@@ -53,4 +53,3 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         if pisa_status.err:
             return HttpResponse('We had some errors <pre>' + html + '</pre>')
         return response
-    
