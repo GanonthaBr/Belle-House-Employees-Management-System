@@ -6,7 +6,7 @@
     <title>Invoice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% load static %}
-   
+
     <!-- Favicon -->
     <link href="logo.png" rel="icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -230,7 +230,7 @@
             padding: 0;
             margin-top: 100px;
         }
-        
+
     }
     .invoice main .notices {
         padding: 7px;
@@ -269,7 +269,7 @@
     }
     /* Rotate the image inside stamp class for 50 degree, anti-clock  */
     .stamp image{
-        transform: rotate(50deg);
+
 
     }
 </style>
@@ -369,8 +369,8 @@
                                     <th class="text-right" style="width: 20%; font-weight:bold ">Prix Total HT <br> (FCFA)</th>
                                 </tr>
                             </thead>
-                            <tbody>  
-                            {%for x in invoice.designations.all%}                       
+                            <tbody>
+                            {%for x in invoice.designations.all%}
                                 <tr>
                                     <td class="no">1</td>
                                     <td class="text-left" style="min-width: 500px;border-right: 1px solid #fff">
@@ -426,11 +426,11 @@
                             </div>
                         </div>
             </main>
-            
+
         </div>
     </div>
     <div class="stamp">
-        <img src="{{stamp}}" alt="Stamp" height="100" width="100">
+        <img src="{{stamp}}" alt="Stamp" width="150" height="180" style="transform: rotate(-20deg);margin-right:5rem;margin-top:-3rem">
     </div>
     <footer>
         <span> Compte Ecobank: <b class="black-footer">160940732001</b> Compte Orabank: <b class="black-footer">76495401901 </b>Compte BIA: <b class="black-footer">61001260006</b>  Compte BOA: <b class="black-footer">004404430009</b> </span>
