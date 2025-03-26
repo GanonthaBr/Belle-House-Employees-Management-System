@@ -48,6 +48,7 @@ class Invoice(models.Model):
     montant_avance = models.DecimalField(decimal_places=2, max_digits=20, default=0)
     payment_mode = models.TextField()
     date = models.DateField(auto_now=True)
+    stamp = models.BooleanField(default=True)
 
     def save(self,*args, **kwargs):
         if not self.number:
