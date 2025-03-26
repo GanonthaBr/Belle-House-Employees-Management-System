@@ -1,4 +1,3 @@
-{% load arithmetics %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
     <title>Invoice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% load static %}
+    {% load arithmetics %}
 
     <!-- Favicon -->
     <link href="logo.png" rel="icon" />
@@ -145,9 +145,9 @@
         border-spacing: 0;
         margin-bottom: 10px;
     }
-    .notes{
-        /* background:#61a1d6; */
-    }
+    /* .notes{
+        background:#61a1d6;
+    } */
     .invoice table.items tbody tr.listings td{
         padding: 5px;
         background: #eee;
