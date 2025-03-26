@@ -375,18 +375,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            {%for x in invoice.designations.all%}
+                                
+                            {% for x in invoice.designations.all %}
                                 <tr class="listings">
-                                    <td class="no item_number">1</td>
+                                    <td class="no item_number">{{ forloop.counter }}</td>
                                     <td class="text-left" style="min-width: 500px;border-right: 1px solid #fff">
-                                        <h4>{{x.designation_title}}</h4>
-                                        <p>{{x.designation_details}}</p>
+                                        <h4>{{ x.designation_title }}</h4>
+                                        <p>{{ x.designation_details }}</p>
                                     </td>
-                                    <td class="qty">{{x.designation_quantity}}</td>
-                                    <td class="unit">{{x.designation_unit_price}}</td>
+                                    <td class="qty">{{ x.designation_quantity }}</td>
+                                    <td class="unit">{{ x.designation_unit_price }}</td>
                                     <td class="total">{{ x.designation_price }} </td>
                                 </tr>
-                                {%endfor%}
+                            {% endfor %}
                             </tbody>
                             <tfoot style="font-size: 10px;">
                                 <tr>
