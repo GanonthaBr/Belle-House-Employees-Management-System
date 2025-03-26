@@ -64,7 +64,7 @@ class Invoice(models.Model):
         # if tax = True, check if type_tax is 'isb' or 'vat'. if 'isb' substract 2% if 'vat' add 16% to total. In case tax = True, nothing is touched
         if self.tax:
             if self.type_tax == 'isb' or self.type_tax == 'ISB':
-                total -= total * 0.02
+                total += total * 0.02
             elif self.type_tax == 'tva' or self.type_tax == 'TVA':
                 total += total * 0.16
         
