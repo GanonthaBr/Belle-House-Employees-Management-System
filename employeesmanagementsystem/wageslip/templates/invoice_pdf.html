@@ -401,7 +401,7 @@
                                     {%if invoice.type_tax == 'ISB' %}
                                     <td colspan="2"> Tax {invoice.type_tax} 2%</td>
                                     {%else%}
-                                    <td colspan="2"> Tax {invoice.type_tax} 16%</td>
+                                    <td colspan="2"> Tax {{invoice.type_tax}} 16%</td>
                                     {%endif%}
                                     <td> <b> {{ invoice.total }} FCFA</b> </td>
                                 </tr>
