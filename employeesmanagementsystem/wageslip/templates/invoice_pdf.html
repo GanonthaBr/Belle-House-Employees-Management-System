@@ -148,10 +148,13 @@
     .notes{
         background:#a4c8e5eb;
     }
-    .invoice table.items td,.invoice table.items th {
+    .invoice table.items tbody tr.listings td{
         padding: 5px;
         background: #eee;
         border-bottom: 1px solid #fff;
+    }
+    .invoice table.items th {
+        background:#61a1d6 ;
     }
     .invoice table th {
         white-space: nowrap;
@@ -370,7 +373,7 @@
                             </thead>
                             <tbody>
                             {%for x in invoice.designations.all%}
-                                <tr>
+                                <tr class="listings">
                                     <td class="no">1</td>
                                     <td class="text-left" style="min-width: 500px;border-right: 1px solid #fff">
                                         <h4>{{x.designation_title}}</h4>
