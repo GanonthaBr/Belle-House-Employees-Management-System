@@ -27,7 +27,7 @@ class InvoiceSerializer(ModelSerializer):
     total = SerializerMethodField()
     class Meta:
         model = Invoice
-        fields = ['id','topic','name','date','number','echeance','client','client_id','tax','type_tax','payment_mode','designations','montant_avance','total_amount','total']
+        fields = ['id','topic','name','date','number','echeance','client','client_id','tax','type_tax','payment_mode','designations','montant_avance','total_amount','total','stamp']
     
     def get_total(self,obj):
         return obj.total
