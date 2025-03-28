@@ -417,6 +417,15 @@
                                     <td colspan="2">Montant Total TTC</td>
                                     <td> {{invoice.total_amount}} FCFA</b> </td>
                                 </tr>
+                                
+                                {% if invoice.name == 'facture' %}
+                                    <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="2">Montant Avance</td>
+                                    <td> {{invoice.montant_avance}} FCFA</b> </td>
+                                </tr>
+                                {% endif %}
+                                    
                                 <tr>
                                     <td colspan="2"></td>
                                     <td colspan="2">Net à payer</td>
