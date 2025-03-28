@@ -403,7 +403,7 @@
                                     {%else%}
                                     <td colspan="2"> Tax {{invoice.type_tax}} 16%</td>
                                     {%endif%}
-                                    <td> <b> {{ invoice.total }} FCFA</b> </td>
+                                    <td> <b> {{ invoice.total_amount|substract:invoice.total }} FCFA</b> </td>
                                 </tr>
                                 {%else%}
                                 <tr>
