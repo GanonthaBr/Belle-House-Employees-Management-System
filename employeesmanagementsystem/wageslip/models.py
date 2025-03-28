@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 
 # Create your models here.
@@ -69,7 +70,7 @@ class Invoice(models.Model):
             elif self.type_tax == 'tva' or self.type_tax == 'TVA':
                 total += total * 0.16
          
-        return total - self.montant_avance
+        return Decimal(total) - self.montant_avance
     @property
     def total(self):
         total = sum(designation.designation_price for designation in self.designations.all())
