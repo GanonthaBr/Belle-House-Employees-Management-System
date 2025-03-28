@@ -39,19 +39,13 @@ class InvoiceSerializer(ModelSerializer):
             setattr(instance, attr, value)
         instance.save()
 
-        # Update or create Designation instances
+        # Clear existing Designation instances
+        instance.designations.all().delete()
+
+        # Create new Designation instances
         if designations_data:
             for designation_data in designations_data:
-                designation_id = designation_data.get('id', None)
-                if designation_id:
-                    # Update existing designation
-                    designation = Designation.objects.get(id=designation_id, invoice=instance)
-                    for attr, value in designation_data.items():
-                        setattr(designation, attr, value)
-                    designation.save()
-                else:
-                    # Create new designation
-                    Designation.objects.create(invoice=instance, **designation_data)
+                Designation.objects.create(invoice=instance, **designation_data)
 
         return instance
 
