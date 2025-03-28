@@ -68,7 +68,7 @@ class Invoice(models.Model):
                 total += total * 0.02
             elif self.type_tax == 'tva' or self.type_tax == 'TVA':
                 total += total * 0.16
-        
+        total = total - self.montant_avance
         return total
     @property
     def total(self):
