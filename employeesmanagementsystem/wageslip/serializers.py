@@ -47,7 +47,7 @@ class InvoiceSerializer(ModelSerializer):
                         designation_obj.save()
                 else:
                     designation_obj = Designation.objects.create(invoice=instance,**designation)
-
+        return instance
 
     def get_total(self,obj):
         return obj.total
