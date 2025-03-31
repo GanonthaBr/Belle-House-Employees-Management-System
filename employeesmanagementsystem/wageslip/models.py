@@ -72,14 +72,15 @@ class Invoice(models.Model):
                 total += total * 0.16
          
         return Decimal(total) - self.montant_avance
+    @property
     def tax_amount(self):
         tax_to_pay = 0
         total = sum(designation.designation_price for designation in self.designations.all())
         if self.tax:
             if self.type_tax == 'isb' or self.type_tax == 'ISB':
-                tax_to_pay =  Decimal(total) * 0.02
+                tax_to_pay =  total * 0.02
             elif self.type_tax == 'tva' or self.type_tax == 'TVA':
-                tax_to_pay =  Decimal(total) * 0.16
+                tax_to_pay =  total * 0.16
         return tax_to_pay
     @property
     def total(self):
