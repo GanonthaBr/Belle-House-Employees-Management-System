@@ -50,6 +50,7 @@ class Invoice(models.Model):
     payment_mode = models.TextField()
     date = models.DateField(auto_now=True)
     stamp = models.BooleanField(default=True)
+    tax_amount = models.DecimalField(decimal_places=2,max_digits=255,default=0)
 
     def save(self,*args, **kwargs):
         if not self.number:
@@ -71,6 +72,15 @@ class Invoice(models.Model):
                 total += total * 0.16
          
         return Decimal(total) - self.montant_avance
+    def tax_amount(self):
+        tax_to_pay = 0
+        total = sum(designation.designation_price for designation in self.designations.all())
+        if self.tax:
+            if self.type_tax == 'isb' or self.type_tax == 'ISB':
+                tax_to_pay =  Decimal(total) * 0.02
+            elif self.type_tax == 'tva' or self.type_tax == 'TVA':
+                tax_to_pay =  Decimal(total) * 0.16
+        return tax_to_pay
     @property
     def total(self):
         total = sum(designation.designation_price for designation in self.designations.all())

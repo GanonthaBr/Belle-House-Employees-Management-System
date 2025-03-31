@@ -351,7 +351,7 @@
                                         <td>
                                             <div class="col invoice-details">
                                                 <h1 class="invoice-id" style="font-size:12px">Numéro de facture : BH/2025/{{invoice.number}}</h1>
-                                                <div class="date">Date: <b>{{invoice.echeance}}</b> </div>
+                                                <div class="date">Date: <b>{{invoice.date}}</b> </div>
                                                 <div class="date">Délai de validité: <b>{{invoice.echeance}}</b> </div>
                                             </div>
                                         </td>
@@ -403,6 +403,7 @@
                                     {%else%}
                                     <td colspan="2"> Tax {{invoice.type_tax}} 16%</td>
                                     {%endif%}
+                                    <td> {{ invoice.tax_amount }} <b> FCFA</b> </td>
                                 </tr>
                                 {%else%}
                                 <tr>

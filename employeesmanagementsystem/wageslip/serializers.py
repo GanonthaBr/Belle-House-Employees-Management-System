@@ -27,7 +27,7 @@ class InvoiceSerializer(ModelSerializer):
     total = SerializerMethodField()
     class Meta:
         model = Invoice
-        fields = ['id','topic','name','date','number','echeance','client','client_id','tax','type_tax','payment_mode','designations','montant_avance','total_amount','total','stamp']
+        fields = ['id','topic','name','date','number','echeance','client','client_id','tax','type_tax','tax_amount','payment_mode','designations','montant_avance','total_amount','total','stamp']
         read_only_fields = ['total_amount','total']
 
     #explicitly define update method
