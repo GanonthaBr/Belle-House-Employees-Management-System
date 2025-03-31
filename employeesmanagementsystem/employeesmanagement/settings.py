@@ -92,6 +92,9 @@ DATABASES = {
         'PASSWORD': 'empLoyeesDB$100$',
         'HOST': 'Bellehouse.mysql.pythonanywhere-services.com',  # e.g., 'yourusername.mysql.pythonanywhere-services.com'
         'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION'"
+        },
     }
 }
 
