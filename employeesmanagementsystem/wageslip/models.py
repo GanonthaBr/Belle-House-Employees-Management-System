@@ -51,6 +51,7 @@ class Invoice(models.Model):
     date = models.DateField(auto_now=True)
     stamp = models.BooleanField(default=True)
     tax_amount = models.DecimalField(decimal_places=2,max_digits=255,default=0)
+    net_to_pay = models.DecimalField(decimal_places=2,max_digits=255,default=0)
 
     def save(self,*args, **kwargs):
         if not self.number:
@@ -64,18 +65,13 @@ class Invoice(models.Model):
     @property
     def total_amount(self):
         total = sum(designation.designation_price for designation in self.designations.all())
-        # if tax = True, check if type_tax is 'isb' or 'vat'. if 'isb' substract 2% if 'vat' add 16% to total. In case tax = True, nothing is touched
-        if self.tax:
-            if self.type_tax == 'isb' or self.type_tax == 'ISB':
-                total += total * 0.02
-            elif self.type_tax == 'tva' or self.type_tax == 'TVA':
-                total += total * 0.16
-         
-        return Decimal(total) - self.montant_avance
+        return total + self.tax_amount
     @property
     def tax_amount(self):
         tax_to_pay = 0
         total = sum(designation.designation_price for designation in self.designations.all())
+
+        # if tax = True, check if type_tax is 'isb' or 'vat'. if 'isb' substract 2% if 'vat' add 16% to total. In case tax = True, nothing is touched
         if self.tax:
             if self.type_tax == 'isb' or self.type_tax == 'ISB':
                 tax_to_pay =  total * 0.02
@@ -86,6 +82,12 @@ class Invoice(models.Model):
     def total(self):
         total = sum(designation.designation_price for designation in self.designations.all())
         return total
+    
+    @property
+    def net_to_pay(self):
+        return self.total_amount - self.montant_avance
+    
+
 class Designation(models.Model):
     invoice = models.ForeignKey(Invoice,related_name='designations',on_delete=models.CASCADE)
     designation_title = models.TextField()
