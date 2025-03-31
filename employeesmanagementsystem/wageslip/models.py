@@ -85,7 +85,7 @@ class Invoice(models.Model):
     
     @property
     def net_to_pay(self):
-        return self.total_amount - self.montant_avance
+        return Decimal(self.total_amount) - Decimal(self.montant_avance)
     
 
 class Designation(models.Model):
