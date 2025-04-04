@@ -25,12 +25,12 @@ from django.db import models
         'montant_avanc'
 '''
 class Client(models.Model):
-    client_name = models.CharField(max_length=100)
-    client_quartier = models.CharField(max_length=100)
-    client_city = models.CharField(max_length=100)
-    client_country = models.CharField(max_length=100)
-    client_phone = models.CharField(max_length=100)
-    client_mail = models.EmailField(max_length=100)
+    client_name = models.CharField(max_length=100,null=True)
+    client_quartier = models.CharField(max_length=100,null=True)
+    client_city = models.CharField(max_length=100,null=True)
+    client_country = models.CharField(max_length=100,null=True)
+    client_phone = models.CharField(max_length=100,null=True)
+    client_mail = models.EmailField(max_length=100,null=True)
    
 class Invoice(models.Model):
     #choices, tuple
@@ -39,12 +39,12 @@ class Invoice(models.Model):
         ('None','None'),
         ('ISB','ISB')
     )
-    topic = models.TextField()
+    topic = models.TextField(null=True)
     name = models.TextField(null=True)
     number = models.CharField(max_length=100)
-    echeance = models.DateField()
+    echeance = models.DateField(null=True)
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    tax = models.BooleanField()
+    tax = models.BooleanField(null=True)
     type_tax = models.CharField(choices=TYPE_TAX,max_length=100)
     montant_avance = models.DecimalField(decimal_places=2, max_digits=20, default=0)
     payment_mode = models.TextField()
@@ -91,7 +91,7 @@ class Invoice(models.Model):
 class Designation(models.Model):
     invoice = models.ForeignKey(Invoice,related_name='designations',on_delete=models.CASCADE)
     designation_title = models.TextField()
-    designation_details = models.TextField()
+    designation_details = models.TextField(null=True)
     designation_unit_price = models.DecimalField(max_digits=20,decimal_places=2)
     designation_quantity = models.IntegerField()
 
