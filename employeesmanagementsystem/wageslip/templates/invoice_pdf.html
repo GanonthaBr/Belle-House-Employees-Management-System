@@ -27,11 +27,11 @@
         color: #fff;
     }
     .company p {
-        font-size: 12px;
+        font-size: 10px;
         text-align: center;
     }
     .company-details span {
-        font-size: 14px;
+        font-size: 12px;
     }
     .container {
         display: flex;
@@ -69,7 +69,7 @@
         background-color: #fff;
         min-height: 680px;
         padding: 5px;
-        line-height: 50%;
+        line-height: 10%;
     }
     .invoice header.header-content {
         padding: 5px 0;
@@ -100,6 +100,8 @@
     .invoice .invoice-to .to {
         margin-top: 0;
         margin-bottom: 0;
+        font-weight:bold;
+        color: #61a1d6;
     }
     .invoice .invoice-details {
         text-align: right;
@@ -110,11 +112,11 @@
         font-size: 8px;
     }
     .designation {
-        font-size: 10px;
+        font-size: 14px;
         text-align: center;
     }
     .designation h2 {
-        font-size: 12px;
+        font-size: 14px;
         padding: 2px 3px;
         border: 1px solid #61a1d6;
         margin-top: 0;
@@ -201,16 +203,17 @@
     }
     .invoice table tfoot.prices td {
         background: #fff;
-        border-bottom: none;
+        /*border-bottom: none;*/
         white-space: nowrap;
         text-align: right;
         padding: 3px 7px;
         font-size: 10px;
-        border-top: 1px solid #aaa;
+        /*border-top: 1px solid #aaa;*/
     }
     .invoice table tfoot{
         /*color:red;*/
-        width:20%;
+        width:100%;
+        /*margin:100px;*/
 
     }
     .invoice table tfoot.prices tr td  {
@@ -220,8 +223,9 @@
     .invoice table tfoot.prices tr td  {
         color: #61a1d6;
         font-size: 12px;
-        border-bottom: 1px solid #61a1d6;
-        width:80%;
+        /*border-bottom: 1px solid #61a1d6;*/
+        /*width:100%;*/
+        margin-left:10px;
     }
     /*.invoice table tfoot.prices tr td:first-child {*/
     /*    border: none;*/
@@ -231,20 +235,21 @@
     /*    border-bottom: 1px solid #61a1d6;*/
     /*    padding-left:5rem;*/
     /*}*/
-    footer {
-        bottom: 10px;
-        width: 100%;
-        color: #777;
-        border-top: 1px solid #aaa;
-        padding: 0;
-        text-align: center;
-    }
-    footer span {
-        font-size: 10px;
-    }
-    footer b{
-        text-align: center;
-    }
+    /*footer {*/
+    /*    bottom: 10px;*/
+    /*    width: 100%;*/
+    /*    color: #777;*/
+    /*    border-top: 1px solid #aaa;*/
+    /*    padding: 0;*/
+    /*    text-align: center;*/
+    /*    background:red;*/
+    /*}*/
+    /*footer span {*/
+    /*    font-size: 10px;*/
+    /*}*/
+    /*footer b{*/
+    /*    text-align: center;*/
+    /*}*/
     @media print {
         .header-div{
             margin: 0;
@@ -255,12 +260,12 @@
             overflow: hidden !important;
             padding: 0;
         }
-        footer {
-            bottom: 10px;
-            width: 100%;
-            padding: 0;
-            margin-top: 100px;
-        }
+        /*footer {*/
+        /*    bottom: 10px;*/
+        /*    width: 100%;*/
+        /*    padding: 0;*/
+        /*    margin-top: 100px;*/
+        /*}*/
 
     }
     .invoice main .notices {
@@ -329,14 +334,14 @@
                                             <h2 class="name">
                                                 <a target="_blank" href="#"> <b>BELLE HOUSE</b> </a>
                                             </h2>
-                                            <b style="font-size: 8px;"> ENTREPRISE DE CONSTRUCTION MODERNE </b>
-                                            <div>Adresse : <span style="color:#61a1d6">Bobiel Niamey-Niger</span> </div>
-                                            <div>Numéro de téléphone : <span style="color:#61a1d6">+227 92 08 50 50</span> </div>
+                                            <b style="font-size: 9px;"> ENTREPRISE DE CONSTRUCTION MODERNE </b>
+                                            <div>Adresse : <span style="color:#61a1d6;font-weight:bold;">Bobiel Niamey-Niger</span> </div>
+                                            <div>Numéro de téléphone : <span style="color:#61a1d6;font-weight:bold">+227 92 08 50 50</span> </div>
                                             <div class="email">Email:
-                                                <a href="mailto:contact@bellehouseniger.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1" style="color:#61a1d6">Contact@bellehouseniger.com</span></a>
+                                                <a href="mailto:contact@bellehouseniger.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1" style="color:#61a1d6;font-weight:bold">Contact@bellehouseniger.com</span></a>
                                             </div>
                                             <div class="email">Site Web:
-                                                <a href="www.bellehouseniger.com"><span class="__cf_email__"> <span style="color:#61a1d6">bellehouseniger.com</span> </span></a>
+                                                <a href="www.bellehouseniger.com"><span class="__cf_email__"> <span style="color:#61a1d6;font-weight:bold">bellehouseniger.com</span> </span></a>
                                             </div>
                                         </div>
                                     </td>
@@ -359,19 +364,19 @@
                                         <th style="width: 35%;"></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody >
                                     <tr>
                                         <td>
-                                            <div class="col invoice-to">
-                                                <div class="text-gray-light">Délivré à:</div>
-                                                <h3 class="to">{{invoice.client.client_name}}</h3>
-                                                <div class="address">{{invoice.client.client_quartier}},{{invoice.client.client_city}}-{{invoice.client.client_country}}</div>
-                                                <div class="address">
+                                            <div class="col invoice-to" style="line-height:5px">
+                                                <p class="text-gray-light">Délivré à: <span class="to">{{invoice.client.client_name}}</span> <p>
+                                                <!--<h3 class="to">{{invoice.client.client_name}}</h3>-->
+                                                <p class="address">Adresse: {{invoice.client.client_quartier}},{{invoice.client.client_city}}-{{invoice.client.client_country}}</p>
+                                                <p class="address">
                                                     Tel: {{invoice.client.client_phone}}
-                                                </div>
-                                                <div class="email">
-                                                    <a href="mailto:'client@gmail.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">{{invoice.client.client_mail}}</span></a>
-                                                </div>
+                                                </p>
+                                                <p class="email">
+                                                    <a href="mailto:'client@gmail.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1" style="font-weight:bold" >{{invoice.client.client_mail}}</span></a>
+                                                </p>
                                             </div>
                                         </td>
                                         <td>
@@ -399,6 +404,11 @@
                             <thead>
                                 <tr>
                                     <th style="width: 5%;border-right: #fff 1px solid;">#</th>
+                                    <th class="text-left" style="width: 40%; font-weight:bold;border-right: #fff 1px solid;">Désignation</th>
+                                    <th class="text-right" style="width: 15%; font-weight:bold ;border-right: #fff 1px solid;">Quantité</th>
+                                    <th class="text-right" style="width: 20%; font-weight:bold; text-align:center;border-right: #fff 1px solid;">Prix Unitaire HT <br> (FCFA)</th>
+                                    <th class="text-right" style="width: 20%; font-weight:bold ;border-right: #fff 1px solid;">Prix Total HT <br> (FCFA)</th>
+                                    <th style="width: 5%;border-right: #fff 1px solid;">#</th>
                                     <th class="text-left" style="width: 40%; font-weight:bold">Désignation</th>
                                     <th class="text-right" style="width: 15%; font-weight:bold ">Quantité</th>
                                     <th class="text-right" style="width: 20%; font-weight:bold; text-align:center">Prix Unitaire HT <br> (FCFA)</th>
@@ -414,80 +424,84 @@
                                         <h4>{{ x.designation_title }}</h4>
                                         <p>{{ x.designation_details }}</p>
                                     </td>
-                                    <td class="qty">{{ x.designation_quantity }}</td>
-                                    <td class="unit">{{ x.designation_unit_price }}</td>
-                                    <td class="total">{{ x.designation_price }} </td>
+                                    <td class="qty" style="border-right: 1px solid #fff">{{ x.designation_quantity }}</td>
+                                    <td class="unit" style="border-right: 1px solid #fff">{{ x.designation_unit_price }}</td>
+                                    <td class="total" style="border-right: 1px solid #fff">{{ x.designation_price }} </td>
                                 </tr>
                             {% endfor %}
                             </tbody>
-                            <tfoot class="prices" style="font-size: 10px; width:50%; border-top: 2px solid #61a1d6;">
+                            <tfoot class="prices" style="font-size: 10px;">
                                 <tr>
+
                                     <td colspan="2"></td>
-                                    <td colspan="2">TOTAL Price</td>
-                                    <td> {{ invoice.total }} <b> FCFA</b> </td>
+                                    <td style="border-bottom:1px solid #ddd" colspan="2">TOTAL Price</td>
+                                    <td style="border-bottom:1px solid #ddd"> {{ invoice.total }} <b> FCFA</b> </td>
+
                                 </tr>
                                 {%if invoice.tax%}
                                 <tr>
                                     <td colspan="2"></td>
                                     {%if invoice.type_tax == 'ISB' %}
-                                    <td colspan="2"> Tax {{invoice.type_tax}} 2%</td>
+                                    <td  style="border-bottom:1px solid #ddd" colspan="2"> Tax {{invoice.type_tax}} 2%</td>
                                     {%else%}
-                                    <td colspan="2"> Tax {{invoice.type_tax}} 16%</td>
+                                    <td  style="border-bottom:1px solid #ddd" colspan="2"> Tax {{invoice.type_tax}} 16%</td>
                                     {%endif%}
-                                    <td> {{ invoice.tax_amount }} <b> FCFA</b> </td>
+                                    <td style="border-bottom:1px solid #ddd" > {{ invoice.tax_amount }} <b> FCFA</b> </td>
                                 </tr>
                                 {%else%}
                                 <tr>
                                     <td colspan="2"></td>
-                                    <td colspan="2"> Tax</td>
-                                    <td> <b> 0 FCFA</b> </td>
+                                    <td style="border-bottom:1px solid #ddd" colspan="2"> Tax</td>
+                                    <td style="border-bottom:1px solid #ddd"> <b> 0 FCFA</b> </td>
                                 </tr>
                                 {%endif%}
                                 <tr>
                                     <td colspan="2"></td>
-                                    <td colspan="2">Montant Total TTC</td>
-                                    <td> {{invoice.total_amount}} FCFA</b> </td>
+                                    <td style="border-bottom:1px solid #ddd" colspan="2">Montant Total TTC</td>
+                                    <td style="border-bottom:1px solid #ddd"> {{invoice.total_amount}} FCFA</b> </td>
                                 </tr>
 
                                 {% if invoice.name == 'Facture' %}
                                     <tr>
                                     <td colspan="2"></td>
-                                    <td colspan="2">Montant Avance</td>
-                                    <td> {{invoice.montant_avance}} FCFA</b> </td>
+                                    <td  colspan="2">Montant Avance</td>
+                                    <td > {{invoice.montant_avance}} FCFA</b> </td>
                                 </tr>
                                 {% endif %}
 
-                                <tr>
+                                <tr style="color: #61a1d6;">
                                     <td colspan="2"></td>
-                                    <td colspan="2">Net à payer</td>
-                                    <td> <b> {{invoice.net_to_pay}} FCFA</b> </td>
+                                    <td style="border-top:1px solid #61a1d6" colspan="2">Net à payer</td>
+                                    <td style="border-top:1px solid #61a1d6"> <b> {{invoice.net_to_pay}} FCFA</b> </td>
                                 </tr>
                             </tfoot>
                         </table>
                         <table style="background: #fff !important;" >
                             <thead>
                                 <tr>
-                                    <th class="text-left" style="width: 80%; font-weight:bold">  </th>
-                                    <th class="text-left" style="width: 20%; font-weight:bold">  </th>
+                                    <th class="text-left" style="width: 75%; font-weight:bold">  </th>
+                                    <th class="text-left" style="width: 25%; font-weight:bold">  </th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="height: 100;">
+                                <tr style="height: 200;">
                                     <td class="notes">
                                         <div class="thanks">Merci!</div>
                                         <div class="notices">
-                                            <div class="title">NOTE Importante!</div>
-                                            <div class="notice">
-                                            <b> Mode de règlement </b> Payment Mode <br>
-                                            </div>
+                                            <div style="background:#E7F2FF;padding:20px;border-left:4px solid #61a1d6;padding-left:1px">
+                                              <span class="title">NOTE Importante!</span>  <br>
+                                              <span class="notice">
+                                              <b> Mode de règlement </b> {{invoice.payment_mode}} <br>
+                                              </span>
+                                             </div>
                                         </div>
                                     </td>
 
                                     {% if invoice.stamp %}
                                     <td>
                                         <div class="stamp">
-                                            <img src="{{stamp}}" alt="Stamp" width="150" height="170" style="transform: rotate(-20deg);margin-left:5rem;margin-top:-3rem">
+                                            <img src="{{stamp}}" alt="Stamp"  style="transform: rotate(-20deg);margin-left:4rem;margin-top:-3rem">
                                         </div>
                                     </td>
                                     {% endif %}
@@ -500,9 +514,12 @@
         </div>
     </div>
 
-    <footer style="position: absolute; bottom: 0; width: 100%; text-align: center;">
-        <span> Compte Ecobank: <b class="black-footer">160940732001</b> Compte Orabank: <b class="black-footer">76495401901 </b>Compte BIA: <b class="black-footer">61001260006</b>  Compte BOA: <b class="black-footer">004404430009</b> </span>
-        <span><b class="black-footer"> RCCM-NE-NIM-01-2017-A10-02845- NIF : 43391/P.</b></span>
+    <footer style="width: 100%;">
+
+        <p style="text-align:center;width:100%">
+         Compte Ecobank: <b class="black-footer">160940732001</b> Compte Orabank: <b class="black-footer">76495401901 </b>Compte BIA: <b class="black-footer">61001260006</b>  Compte BOA: <b class="black-footer">004404430009</b>
+        <b class="black-footer"> RCCM-NE-NIM-01-2017-A10-02845- NIF : 43391/P.</b>
+        </p>
     </footer>
 </body>
 </html>
