@@ -18,7 +18,7 @@ class EmployeeViewSet(ModelViewSet):
         try:
             # Retrieve the employee using the custom field
             return Employee.objects.get(employee_id=lookup_field_value)
-        except Employee.DoesNotExist:
+        except:
             raise Response({"error": "Employee not found!"}, status=status.HTTP_404_NOT_FOUND)
 
     # def get(self, request, pk):
