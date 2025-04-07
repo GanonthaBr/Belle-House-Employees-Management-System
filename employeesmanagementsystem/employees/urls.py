@@ -8,5 +8,5 @@ router.register(r'employees',EmployeeViewSet,basename='employees')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('employees/<int:pk>', views.EmployeeView.as_view()),
+    # path('employees/<int:pk>', views.EmployeeView.as_view()),
 ]
