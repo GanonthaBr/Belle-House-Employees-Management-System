@@ -12,21 +12,20 @@ class EmployeeViewSet(ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
-    def get_object(self):
-        # Fetch the custom field value from the URL
-        lookup_field_value = self.kwargs.get('employee_id')  # Replace 'employee_code' with your field name
-        try:
-            # Retrieve the employee using the custom field
-            return Employee.objects.get(employee_id=lookup_field_value)
-        except:
-            raise Response({"error": "Employee not found!"}, status=status.HTTP_404_NOT_FOUND)
+    # def get_object(self):
+    #     # Fetch the custom field value from the URL
+    #     lookup_field_value = self.kwargs.get('employee_id') 
+    #     try:
+    #         return Employee.objects.get(employee_id=lookup_field_value)
+    #     except:
+    #         raise Response({"error": "Employee not found!"}, status=status.HTTP_404_NOT_FOUND)
 
-    # def get(self, request, pk):
-    #     employee = Employee.objects.get(employee_id=pk)
-    #     if employee:
-    #         serializer = EmployeeSerializer(employee)
-    #         return Response(serializer.data,status=status.HTTP_200_OK)
-    #     return Response({"message":"Employee not found!"},status=status.HTTP_404_NOT_FOUND)
+    def get(self, request, pk):
+        employee = Employee.objects.get(employee_id=pk)
+        if employee:
+            serializer = EmployeeSerializer(employee)
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        return Response({"message":"Employee not found!"},status=status.HTTP_404_NOT_FOUND)
     
     # def post(self,request):
     #     serializer = EmployeeSerializer(data=request.data)
